@@ -1,0 +1,195 @@
+/* pages/saveOrder/saveorder.wxss */
+.page {
+  background-color: #f2f2f2;
+  margin-top: 10px;
+  min-height: 90vh;
+}
+
+.weui-article__p {
+  color: #666666;
+  font-size: 14px;
+  padding-top: 8px;
+}
+
+.weui-article__h3 {
+  font-size: 16px;
+
+}
+
+.weui-cells:before {
+  border-top: none;
+}
+
+.weui-cell:before {
+  border-top: none;
+}
+
+.weui-cell {
+  padding: 1px;
+}
+
+.weui-flex__item {
+  font-size: 14px;
+
+}
+
+.weui-input {
+  font-size: 14px;
+}
+
+.input-placeholder {
+  color: #999999;
+  font-size: 28rpx;
+}
+
+.weui-label {
+  width: 63px;
+  font-size: 14px;
+  color: #333333;
+}
+
+.weui-tabbar {
+  position: fixed;
+  bottom: 0;
+  width: 100%
+}
+
+.weui-article__section {
+  padding-left: 20rpx;
+  background-color: white;
+  border-radius: 5px;
+  margin: 10px;
+  min-height: 46px;
+}
+
+.bor-botm-right-radius {
+  border-bottom-right-radius: 5px;
+}
+
+.order-remark {
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.bor-radius5 {
+  border-radius: 5px;
+}
+
+.border {
+  height: 1px;
+  width: 94%;
+  border-bottom: 1px solid #cfcfcf;
+}
+
+.activey_title {
+  margin-bottom: .34em;
+  height: 26px;
+  /* white-space: nowrap; */
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  color: #333333;
+}
+
+.activey_ljxl {
+  font-size: 14px;
+  color: #999999;
+  height: 30px;
+  line-height: 30px;
+}
+
+.danjia {
+  text-align: right;
+  padding-right: 20rpx;
+}
+
+.danjia_yh {
+  color: #FD4027
+}
+
+.shop_details {
+  background-color: white;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+
+}
+
+.activey_img {
+  flex-basis: 20%;
+}
+
+.priceTotal {
+  height: 39px;
+  background-color: white;
+  line-height: 39px;
+  margin: 0px 10px;
+  padding: 0px 0px 0px 10px;
+  border-radius: 5px;
+}
+
+.weui-cells:after {
+  border-bottom: none;
+}
+
+.weui-tabbar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 58px;
+  background-color: white;
+}
+
+.weui-tabbar .weui-flex {
+  flex: 1;
+}
+
+.mgr10 {
+  margin-top: 10px;
+}
+
+.weui-btn_mini {
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 15px;
+  background-color: #6FB512;
+  width: 80px;
+  height: 30px;
+  line-height: 30px;
+
+}
+
+.weui-flex-tjdd {
+  text-align: right;
+  margin: 10px;
+  width: 80px;
+}
+
+.weui-flex-hjje {
+  flex: 2;
+  line-height: 50px;
+  text-align: right;
+  height: 58px;
+  font-size: 16px;
+}
+
+.weui-tabbar:before {
+  border-top: none;
+}
+
+.weui-toast {
+  background-color: #000000;
+  opacity: 0.5;
+  width: 132px;
+  height: 40px;
+  line-height: 40px;
+}
+
+.weui-toast__content {
+  color: #FFFFFF;
+}
+.picker{
+  padding: 13px;
+  background-color: #FFFFFF;
+}

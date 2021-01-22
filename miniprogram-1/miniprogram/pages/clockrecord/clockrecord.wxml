@@ -1,0 +1,27 @@
+<view class="container">
+  <view class="list">
+    <view class="li clearfix" wx:for="{{listArr}}" wx:key="unique">
+      <view class="po-avt-wrap left">
+        <image class="po-avt" src="{{item.avatarUrl}}">
+        </image>
+      </view>
+      <view class="po-cmt">
+        <view class="po-hd">
+          <view class="po-name"><text class="data-name">{{item.nickname}}</text></view>
+          <view class="post">
+            <view>{{item.remark}}</view>
+            <view style="height:80px;">
+              <image class="list-img"
+                src="{{item.fileID}}"
+                style="height: 75px;" />
+            </view>
+          </view>
+        </view>
+        <view class="time">{{item.clocktime}}</view>
+        <view class="time">{{item.adress}}</view>
+      </view>
+    </view>
+
+
+  </view>
+</view>

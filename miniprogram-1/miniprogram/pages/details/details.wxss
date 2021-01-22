@@ -1,0 +1,163 @@
+/* pages/details/details.wxss */
+
+
+.weui-article__section {
+  padding-left: 20rpx;
+  background-color: white;
+  margin-bottom: 0.5em;
+}
+
+.page {
+  background-color: #f2f2f2;
+}
+
+.activey_price {
+  color: red;
+}
+
+.weui-article__h3 {
+  font-size: 13px;
+  padding-top: 20rpx;
+  padding-right: 94rpx;
+}
+
+.weui-article__p {
+  font-size: 0.8em;
+  padding: 23rpx 0px;
+  margin: 0;
+}
+
+.weui-tabbar {
+  position: fixed;
+  bottom: 0;
+  width: 100%
+}
+
+.activey_img {
+  border-radius: 10px;
+  margin-right: 20px;
+  background-size: 50%;
+}
+
+.activey_title {
+  font-weight: 700;
+  margin-bottom: .34em;
+  line-height: 1.4;
+}
+
+.activey_ljxl {
+  font-size: 0.78em;
+  color: #727272
+}
+
+.activey_price {
+  color: red;
+}
+
+.weui-half-screen-dialog__bd {
+  padding-top: 12px;
+}
+
+.weui-tabbar__icon {
+  height: 24px;
+  width: 24px;
+}
+
+.weui-badge {
+  padding: .10em .3em;
+}
+
+.detail_btn_car {
+  width: 221rpx;
+  height: 89rpx;
+  color: white;
+  text-align: center;
+  line-height: 89rpx;
+  font-size: 13px;
+}
+
+.addMycar_css {
+  background: #ffbf16;
+  border-bottom-left-radius: 15px;
+  border-top-left-radius: 15px;
+
+}
+
+
+.quclishop_css {
+  background: #71b415;
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.weui-tabbar__item:last-child {
+  margin-right: 20rpx;
+  flex-basis: 9%;
+  flex: 1.5;
+}
+
+.weui-tabbar__item.weui-bar__item_on .weui-tabbar__icon,
+.weui-tabbar__item.weui-bar__item_on .weui-tabbar__icon>i,
+.weui-tabbar__item.weui-bar__item_on .weui-tabbar__label {
+  color: black;
+}
+
+.w9 {
+  flex-basis: 9%;
+  flex: 1.5;
+}
+
+.act_img {
+  width: 1.5em;
+  height: 1.5em;
+  float: right;
+}
+
+.jia {
+  margin: 10rpx 10rpx 8rpx 40rpx;
+}
+
+.jian {
+  margin: 10rpx 40rpx 8rpx 10rpx;
+}
+
+.num {
+  line-height: 29px;
+}
+
+.weui-half-screen-dialog__bd {
+  padding-bottom: 14px;
+}
+
+.mrgg {
+  font-weight: 700;
+  font-size: 0.6em;
+  margin-bottom: 5px;
+  margin-bottom: 5px;
+}
+
+.he {
+  width: 42px;
+  border: 1px solid #cfcfcf;
+  border-radius: 15px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  font-size: 0.6em;
+  vertical-align: middle;
+  margin-bottom: 10px;
+}
+
+.weui-btn_cell-default {
+  background: #71b415;
+  color: white;
+  border-radius: 10px;
+  height: 42px;
+  margin-bottom: 20px;
+  line-height: 9px;
+  margin-top: 15px;
+}
+
+.weui-form-preview__ft {
+  width: 100%;
+}

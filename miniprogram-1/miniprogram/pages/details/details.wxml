@@ -1,0 +1,67 @@
+<!--pages/details/details.wxml-->
+
+<view class="page">
+	<view class="channelSwper">
+		<swiper autoplay="true" style="height:238px;">
+			<block wx:for="{{channelbg}}" wx:key="id">
+				<swiper-item class="channlImg"
+					style="background:url({{item.pic}}) no-repeat center center / cover;background-size:100%;"></swiper-item>
+			</block>
+		</swiper>
+	</view>
+
+	<view class="weui-article__section">
+		<view class="weui-article__h3">{{details.name}}</view>
+		<view class="weui-article__p">
+			品牌发源地：{{details.producing_area}}
+		</view>
+		<view class="weui-article__p activey_price">
+			￥{{details.item_price}}
+		</view>
+	</view>
+
+	<view class="weui-article__section">
+		<view class="weui-article__p">
+			配送 顺丰包邮
+		</view>
+	</view>
+
+	<view class="weui-tabbar">
+		<view class="weui-form-preview__ft">
+			<view class="weui-form-preview__btn weui-form-preview__btn_default" bindtap="gotoHome">返回首页</view>
+			<view class="weui-form-preview__btn weui-form-preview__btn_primary" bindtap="openDialog">购买</view>
+		</view>
+	</view>
+
+
+	<view class="fadeIn" wx:if="{{dialog}}">
+		<view class="weui-mask" bindtap="close"></view>
+		<view class="weui-half-screen-dialog">
+			<view class="weui-half-screen-dialog__bd weui-flex">
+				<!-- <image class="weui-flex__item activey_img" src="{{details.mainPic}}"></image> -->
+				<view class="weui-flex__item activey_img"
+					style="background:url({{details.pic}}) no-repeat center center / cover;background-size:84%;">
+				</view>
+				<view class="weui-flex__item" style="flex-basis:44%;">
+					<view class="placeholder">
+						<view class="activey_title">{{details.name}}</view>
+						<view class="activey_price">￥<text>{{details.item_price}}</text></view>
+					</view>
+				</view>
+			</view>
+		
+			<view class="weui-flex">
+				<view class="weui-flex__item">购买数量</view>
+				<view class="weui-flex__item">
+					<view class="clearfix">
+						<image bindtap="jia" class="act_img jia" src="../../images/jia.png"></image>
+						<view class="right num">{{num}}</view>
+						<image bindtap="jian" class="act_img jian" src="../../images/jian.png"></image>
+					</view>
+				</view>
+			</view>
+			<a bindtap="queryOk" class="weui-btn_cell weui-btn_cell-default weui-btn_primary">确定</a>
+		</view>
+	</view>
+
+</view>

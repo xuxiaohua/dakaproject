@@ -1,0 +1,19 @@
+<view class="container">
+  <view>
+    <view class="detail-box clearfix">
+      <view class="detail-content" wx:for="{{listArr}}" wx:for-item="commend" wx:for-index="id">
+        <image bindtap="gotoDetails" data-id="{{commend._id}}" class="img" src="{{commend.fileID}}"></image>
+        <view class="title">{{commend.remark}}</view>
+        <view class="price-cart">
+          <image class="avatarUrl" src="{{commend.avatarUrl}}"></image>
+          <text class="price">{{commend.nickname}}</text>
+          <!-- <image wx:if="{{commend.zan != 'yes'}}" class="dianzan" data-type="1" bindtap="zan" data-id="{{commend._id}}"
+            src="/images/zan.png"></image>
+          <image wx:if="{{commend.zan == 'yes'}}" class="dianzan" data-type="2" bindtap="zan" data-id="{{commend._id}}"
+            src="/images/have_zan.png"></image>
+          <text class="unit">123</text> -->
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

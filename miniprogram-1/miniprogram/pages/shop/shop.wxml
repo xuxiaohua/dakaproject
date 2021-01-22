@@ -1,0 +1,50 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- <view class="weui-btn weui-btn_primary" wx:if="{{islogin}}" bindtap="gotoMap">我要打卡</view>
+  <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" wx:if="{{!islogin}}" class="userinfo-avatar">登陆</button> -->
+  <!-- <view class="classify-head">
+    <view class="classify-search" bindtap="skipSearch">
+      <image class="icon-sou" src="/../images/search.png"></image>
+      <view class="sou-con price">搜索</view>
+    </view>
+  </view> -->
+  <view class="classify">
+    <!-- 分类导航栏 S -->
+    <scroll-view class="left-navbar" scroll-y="true">
+      <view wx:for="{{screenArray}}" class="{{ currentTab == index ? 'active' : '' }}" wx:key="unique"
+        bindtap="{{ currentTab != index ? 'navbarTap':'' }}" id="{{index}}" data-screenId="{{item.screenId}}">
+        {{item.screenName}}
+      </view>
+    </scroll-view>
+    <!-- 分类导航栏 E -->
+
+    <scroll-view class="right" scroll-y="true" scroll-top="{{scrollTop}}" wx:if="{{screenId==1}}">
+      <!--顶部图片-->
+      <!-- <view class="goods-banner">
+        <image class="img-banner" src="{{childrenArray.showImageUrl}}" wx:if="{{childrenArray.showImageUrl}}"
+          mode="scaleToFill"></image>
+      </view> -->
+      <!--商品展示-->
+      <!-- <view class="goods-list" wx:for="{{childrenArray.childrenScreenArray}}" wx:key="unique">
+        <view class="goods-title">{{item.screenName}}</view>
+        <view wx:for="{{item.childrenScreenArray}}" class="goods" wx:key="unique" bindtap="ToSearchResult"
+          id="{{item.screenName}}">
+          <image class="img" src="{{item.showImageUrl}}" wx:if="{{item.showImageUrl}}"></image>
+          <text>{{item.screenName}}</text>
+        </view>
+      </view> -->
+
+      <view class="goods-list">
+        <view wx:for="{{childrenArray}}" class="goods" wx:key="unique" bindtap="ToSearchResult"
+          data-actid="{{item._id}}">
+          <image class="img" src="{{item.pic}}" wx:if="{{item.pic}}"></image>
+          <text style="font-size: 12px;">{{item.name}}</text>
+        </view>
+      </view>
+
+    </scroll-view>
+
+
+  </view>
+
+</view>

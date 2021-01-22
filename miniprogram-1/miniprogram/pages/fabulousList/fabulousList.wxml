@@ -1,0 +1,22 @@
+<view>
+  <view class="pageSapce">
+    <view class="table ">
+      <view class="tr thColor">
+        <view class="th">操作</view>
+        <view class="th ">昵称</view>
+        <view class="th ">时间</view>
+      </view>
+      <view class="table-wrap">
+        <block wx:for="{{listData}}" wx:key="{{code}}">
+          <view class="tr">
+            <view class="td">点赞</view>
+            <view class="td">{{item.nickname}}</view>
+            <view class="td">{{item.time}}</view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+
+
+</view>

@@ -1,0 +1,106 @@
+.detail-box {
+  margin: 0px 20rpx;
+}
+
+.detail-content {
+  width: 48%;
+  height: 291px;
+  border-radius: 6px;
+  flex: 1;
+  margin: 10px 0px;
+  background-color: #FFFFFF;
+  padding-bottom: 10px;
+}
+
+.detail-content:nth-child(odd) {
+  float: left;
+}
+
+.detail-content:nth-child(even) {
+  float: right;
+}
+
+.detail-content .title {
+  font-size: 14px;
+  color: #333333;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin: 10px 10px 5px 10px;
+}
+
+.detail-content .symbol {
+  color: #FD4027;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.detail-content .price {
+  color: #2d2c2c;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.detail-content .unit {
+  color: black;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.detail-content .img {
+  height: 190px;
+  width: 100%;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.cart-bgcolor {
+  width: 25px;
+  height: 25px;
+  background-color: #6FB512;
+  border-radius: 50%;
+  text-align: center;
+  display: inline-block;
+  line-height: 25px;
+  position: relative;
+}
+
+.cart-bgcolor .tips {
+  color: #ffffff;
+  background-color: #FD4027;
+  position: absolute;
+  padding: 0px 5px;
+  text-align: center;
+  top: -6px;
+  right: -7px;
+}
+
+.cart-bgcolor image {
+  width: 15px;
+  height: 15px;
+  vertical-align: middle;
+}
+
+.price-cart {
+  padding: 0px 10px;
+  height: 37px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.avatarUrl {
+  height: 26px;
+  width: 26px;
+  border-radius: 26px;
+  margin-right: 5px;
+}
+
+.dianzan{
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}

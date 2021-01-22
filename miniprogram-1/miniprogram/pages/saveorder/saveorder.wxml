@@ -1,0 +1,112 @@
+<view class="page">
+	<view style="height:3px;width:100%;"></view>
+	<view class="weui-article__section">
+		<view style="width: 98%;magin: 0 auto;height: 1px;background: #E5E5E5;margin-top: 10px;margin-bottom: 10px;"></view>
+		<view class="weui-cells bor-botm-right-radius">
+			<view class="weui-cell">
+				<view class="weui-cell__hd">
+					<view class="weui-label">购买人</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input class="weui-input" focus placeholder="请输入姓名" value="{{userName}}" bindinput="getUserName"
+						placeholder-class="input-placeholder" />
+				</view>
+			</view>
+			<view class="weui-cell">
+				<view class="weui-cell__hd">
+					<view class="weui-label">手机号</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input class="weui-input" type="number" value="{{userMobile}}" placeholder="请输入手机号" bindinput="getUserMobile"
+						maxlength="11" />
+				</view>
+			</view>
+			<view class="weui-cell">
+				<view class="weui-cell__hd">
+					<view class="weui-label">身份证号</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input class="weui-input" maxlength="18" placeholder="请输入身份证号" value="{{userIdcard}}" bindinput="getUserIdcard"
+						placeholder-class="input-placeholder" />
+				</view>
+			</view>
+			<view class="weui-cell">
+				<view class="weui-cell__hd">
+					<view class="weui-label">提货点</view>
+				</view>
+				<view class="weui-cell__bd">
+					<picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+						<view class="picker">
+							{{array[index]}}
+						</view>
+					</picker>
+				</view>
+			</view>
+		</view>
+
+	</view>
+
+
+
+	<view class="weui-flex shop_details">
+		<view class="weui-flex__item activey_img"
+			style="background:url({{details.pic}}) no-repeat center center / cover;background-size:82%;height:100px;">
+		</view>
+		<view class="weui-flex__item" style="flex-basis:22%;">
+			<view class="placeholder">
+				<view class="activey_title">{{details.name}}</view>
+				<view class="activey_ljxl">数量：<text>{{carmun}}</text></view>
+			</view>
+		</view>
+		<view class="weui-flex__item danjia">
+			免税价：￥{{details.item_price}}
+		</view>
+	</view>
+
+
+	<view class="weui-flex priceTotal">
+		<view class="weui-flex__item">商品总金额
+		</view>
+		<view class="weui-flex__item danjia">
+			免税价：￥{{payPrice}}
+		</view>
+	</view>
+
+
+
+	<view class="order-remark">
+		<view class="weui-cells bor-radius5">
+			<view class="weui-cell" style="height: 30px;">
+				<view class="weui-cell__hd">
+					<view class="weui-label" style="width: 76px;">订单备注</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input class="weui-input" bindinput="getUserRemark" placeholder="需要留言请输入" />
+				</view>
+			</view>
+		</view>
+	</view>
+	<view style="height:5px;width:100%;"></view>
+
+	<view class="weui-tabbar">
+		<view class="weui-flex">
+			<view class=" weui-flex-hjje">
+				<text>合计</text><text style="color:#FD4027;"><text style="font-size:12px;">￥</text>{{payPrice}}</text>
+			</view>
+			<view class=" weui-flex-tjdd">
+				<a class="weui-btn weui-btn_mini weui-btn_primary" bindtap="saveOrder">提交订单</a>
+			</view>
+		</view>
+	</view>
+
+	<view class="fadeIn {{hideToast ? 'fadeOut' : ''}}" wx:if="{{toast}}">
+		<view class="weui-mask_transparent"></view>
+		<view class="weui-toast">
+			<view class="weui-toast__content">{{totalMsg}}</view>
+		</view>
+	</view>
+
+
+
+
+</view>

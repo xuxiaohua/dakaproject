@@ -1,0 +1,66 @@
+<view class="container">
+  <view class="list">
+    <view class="li clearfix">
+      <view class="po-avt-wrap left">
+        <image class="po-avt" src="{{listObj.avatarUrl}}">
+        </image>
+      </view>
+      <view class="po-cmt">
+        <view class="po-hd">
+          <view class="po-name"><text class="data-name">{{listObj.nickname}}</text></view>
+          <view class="post">
+            <view>{{listObj.remark}}</view>
+            <view style="height:80px;">
+              <image class="list-img" src="{{listObj.fileID}}" style="height: 75px;" />
+            </view>
+          </view>
+        </view>
+
+        <view class="zanpinglun">
+          <view class="clearfix">
+            <view class="time left">{{listObj.clocktime}}</view>
+            <image class="c-icon" src="/images/c.png" bindtap="showInvite" />
+          </view>
+
+          <view wx:if="{{inviteShow}}" class='invite clearfix'>
+            <view class="left b">
+              <image class="bubble" wx:if="{{!hava_fabulous}}" bindtap="zan" data-type="1" src="/images/love_white.png">
+              </image><text wx:if="{{!hava_fabulous}}" bindtap="zan" data-type="1">赞</text>
+              <image class="bubble" wx:if="{{hava_fabulous}}" bindtap="zan" data-type="2" src="/images/love_white.png">
+              </image><text wx:if="{{hava_fabulous}}" bindtap="zan" data-type="2">取消赞</text>
+            </view>
+            <view class="left b" style="width: 10px;"></view>
+            <view class="right b">
+              <image class="bubble" bindtap="showText" src="/images/pinglun_white.png"></image><text
+                bindtap="showText">评论</text>
+            </view>
+          </view>
+
+        </view>
+
+        <view>
+          <view class="r"></view>
+          <view class="cmt-wrap">
+            <view class="like" wx:if="{{allPeopleStr!=''&&allPeopleStr!=null}}">
+              <image src="/images/l.png"></image>
+              {{allPeopleStr}}
+            </view>
+            <view class="cmt-list">
+              <view class="p" wx:for="{{commentList}}" wx:for-index="id"><text
+                  class="span">{{item.nickname}}：</text>{{item.comment}}</view>
+            </view>
+          </view>
+        </view>
+
+        <view class="time">{{listObj.adress}}</view>
+      </view>
+    </view>
+
+
+  </view>
+
+  <view class="weui-tabbar" wx:if="{{isfocus}}">
+    <input focus="{{isfocus}}" type="text" confirm-type="send" bindconfirm="pinglun" placeholder="说点什么吧"
+      bindinput="getCommentText" cursor-spacing="10" />
+  </view>
+</view>

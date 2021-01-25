@@ -20,7 +20,89 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {},
+  onLoad: function (options) {
+
+    app.globalData.cloudPath = "";
+    app.globalData.fileID = "";
+    app.globalData.filePath = "";
+    //this.onLoad();
+
+    var that = this
+    // 获取用户信息
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+          wx.getUserInfo({
+            success: res1 => {
+              this.setData({
+                islogin: true
+              });
+              app.globalData.userInfo = res1.userInfo;
+              wx.getLocation({
+                type: "gcj02",
+                success(res2) {
+                  var latitude = res2.latitude;
+                  var longitude = res2.longitude;
+                  var avatarUrl = app.globalData.userInfo.avatarUrl;
+                  var address = that.returnAddress(latitude, longitude);
+                  that.setData({
+                    latitude: latitude,
+                    longitude: longitude,
+                    address: address
+                  });
+                },
+                fail: function (xhy) {
+                  console.log(xhy);
+                }
+              });
+
+              wx.cloud.callFunction({
+                name: 'login',
+                data: {},
+                success: function (res3) {
+                  console.log('[云函数] [login] 调用成功', res3);
+                  wx.setStorageSync("_openid", res3.result.userInfo.openId);
+                },
+                fail: function (err) {
+                  console.error('[云函数] [login] 调用失败', err)
+                }
+              });
+
+              var db = wx.cloud.database();
+              const todos = db.collection('clockrecord').where({
+                "_openid": wx.getStorageSync("_openid")
+              }).get({
+                success: function (res4) {
+                  that.setData({
+                    maprecord: res4.data
+                  });
+                  that.initMap();
+                },
+                fail: function (xhy) {
+                  console.log(xhy);
+                }
+              });
+            }
+          });
+        } else {
+          console.log(3);
+          wx.showModal({
+            title: "提示",
+            content: "请先到我的页面登录",
+            showCancel: false,
+            success(res) {
+              if (res.confirm) {
+                wx.switchTab({
+                  url: "/pages/mine/mine"
+                });
+              }
+            }
+          });
+        }
+      }
+    });
+  },
   initMap: function () {
     var that = this;
     var maprecord = that.data.maprecord;
@@ -98,14 +180,43 @@ Page({
         app.globalData.filePath = "";
 
         const filePath = res.tempFilePaths[0];
+        console.log("filePath:" + filePath);
         // 上传图片
-        const cloudPath = `my-image${filePath.match(/\.[^.]+?$/)[0]}`
+        const cloudPath = `my-image${filePath.match(/\.[^.]+?$/)[0]}`;
+        console.log("cloudPath:" + cloudPath);
+
+        wx.getFileSystemManager().readFile({
+          filePath: filePath, //选择图片返回的相对路径
+          encoding: 'base64', //编码格式
+          success: res1 => { //成功的回调
+            wx.cloud.callFunction({
+              name:'file',
+              data:{
+                path: 'pictures/' + new Date()+'.png',
+                file: res1.data
+              },
+              success(_res){
+               
+                console.log(_res)
+              },fail(_res){
+                console.log(_res)
+              }
+            })
+          }
+        })
+
+
+
+
+
+        return;
+        
         wx.cloud.uploadFile({
           cloudPath,
           filePath,
-          success: res => {
-            console.log('[上传文件] 成功：', res)
-            app.globalData.fileID = res.fileID;
+          success: res2 => {
+            console.log('[上传文件] 成功：', res2)
+            app.globalData.fileID = res2.fileID;
             app.globalData.cloudPath = cloudPath;
             app.globalData.filePath = filePath;
             that.setData({
@@ -114,20 +225,25 @@ Page({
             wx.hideLoading();
           },
           fail: e => {
-            console.error('[上传文件] 失败：', e);
-            wx.showToast({
-              icon: 'none',
-              title: '上传失败',
-            })
+            console.error('1[上传文件] 失败：', e);
+            wx.showModal({
+              title: "提示",
+              content: e + "-",
+              showCancel: false,
+            });
+            // wx.showToast({
+            //   icon: 'none',
+            //   title: '上传失败',
+            // })
           },
-          complete: () => {
-            console.error('[上传文件] 失败：complete', e)
-            wx.hideLoading()
+          complete: (eeee) => {
+            console.log(eeee);
+            wx.hideLoading();
           }
         });
       },
-      fail: e => {
-        console.error(e)
+      fail: e1 => {
+        console.error(e1)
       }
     })
   },
@@ -172,7 +288,6 @@ Page({
       name: 'login',
       data: {},
       success: res => {
-        console.log(res);
         wx.setStorageSync("_openid", res.result.userInfo.openId);
         var db = wx.cloud.database();
         db.collection('clockrecord').add({
@@ -248,92 +363,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-    app.globalData.cloudPath = "";
-    app.globalData.fileID = "";
-    app.globalData.filePath = "";
-    //this.onLoad();
-
-    var that = this
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        console.log(1);
-        if (res.authSetting['scope.userInfo']) {
-          console.log(2);
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res1 => {
-              console.log(res1);
-              this.setData({
-                islogin: true
-              });
-              app.globalData.userInfo = res1.userInfo;
-              wx.getLocation({
-                type: "gcj02",
-                success(res2) {
-                  var latitude = res2.latitude;
-                  var longitude = res2.longitude;
-                  var avatarUrl = app.globalData.userInfo.avatarUrl;
-                  var address = that.returnAddress(latitude, longitude);
-                  that.setData({
-                    latitude: latitude,
-                    longitude: longitude,
-                    address: address
-                  });
-                },
-                fail: function (xhy) {
-                  console.log(xhy);
-                }
-              });
-
-              wx.cloud.callFunction({
-                name: 'login',
-                data: {},
-                success: function (res3) {
-                  console.log('[云函数] [login] 调用成功', res3);
-                  wx.setStorageSync("_openid", res3.result.userInfo.openId);
-                },
-
-                fail: function (err) {
-                  console.error('[云函数] [login] 调用失败', err)
-                }
-              });
-
-              var db = wx.cloud.database();
-              const todos = db.collection('clockrecord').where({
-                "_openid": wx.getStorageSync("_openid")
-              }).get({
-                success: function (res4) {
-                  that.setData({
-                    maprecord: res4.data
-                  });
-                  that.initMap();
-                },
-                fail: function (xhy) {
-                  console.log(xhy);
-                }
-              });
-            }
-          });
-        } else {
-          console.log(3);
-          wx.showModal({
-            title: "提示",
-            content: "请先到我的页面登录",
-            showCancel: false,
-            success(res) {
-              if (res.confirm) {
-                wx.switchTab({
-                  url: "/pages/mine/mine"
-                });
-              }
-            }
-          });
-        }
-      }
-    });
-  },
+  onShow: function () {},
 
   /**
    * 生命周期函数--监听页面隐藏

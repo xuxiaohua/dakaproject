@@ -20,7 +20,7 @@
  表格纵向滑动条
  */
 .table-wrap {
-  height: 400rpx;
+  /* height: 400rpx; */
   overflow-y: scroll;
   overflow-x: hidden;
 }
